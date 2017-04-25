@@ -90,7 +90,7 @@ namespace DPZBot
                     else if (e.GetArg("arg") == "tableau")
                         await e.Channel.SendMessage("http://i.imgur.com/G7Aw641.png");
                     else if (e.GetArg("arg") == "cristaux")
-                        await e.Channel.SendMessage("https://alphaoptix.github.io/bdocrystalz/")
+                        await e.Channel.SendMessage("https://alphaoptix.github.io/bdocrystalz/");
                     else
                         await e.Channel.SendMessage("1 - https://www.reddit.com/r/blackdesertonline/comments/5gzhox/alexmac_gear_enchant_guide_get_those_tets_boys/ \n2 - https://docs.google.com/spreadsheets/d/1WzAeIFslcWhZ-TudUTrvt4S6ejGF8Uo5FwVqNivfHK0/pubhtml \ntableau - http://i.imgur.com/G7Aw641.png \ncristaux https://alphaoptix.github.io/bdocrystalz/");
                 });
