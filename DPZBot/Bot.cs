@@ -21,10 +21,27 @@ namespace DPZBot
             var commands = discord.GetService<CommandService>();
             commands.CreateCommand("aide").Alias(new string[] { "help" } ).Do(async (e) =>
             {
-                await e.Channel.SendMessage("**!dpz cuisine** - Site pour la cuisine\n**!dpz database <en | fr>** - Site de la base de donnée de *Black Desert Online*\n**!dpz map <1 | 2>** - Sites de maps\n**!dpz alchimie <1 | 2 | 3 | pierre>** - Sites pour l'alchimie\n**!dpz enchant <1 | 2 | tableau>** - Sites pour l'enchantement\n**!dpz guide <awaktamer | dk | bdo>** - Sites de guides pour les classes et le jeu\n**!dpz progression <leveling | contrib | inventaire | amitie>** - Sites pour la progression dans le jeu\n**!dpz divers** - Sites divers par rapport à *Black Desert Online*\n**!dpz bonus** - Surprise !");
+                await e.Channel.SendMessage("**!dpz warnode** - Gestion des warnodes\n**!dpz guilde <site | elephant | voilier>** - Site de la guilde et autres pour la guilde\n**!dpz cuisine** - Site pour la cuisine\n**!dpz database <en | fr>** - Site de la base de donnée de *Black Desert Online*\n**!dpz map <1 | 2>** - Sites de maps\n**!dpz alchimie <1 | 2 | 3 | pierre>** - Sites pour l'alchimie\n**!dpz enchant <1 | 2 | tableau | cristaux>** - Sites pour l'enchantement\n**!dpz guide <awaktamer | dk | bdo>** - Sites de guides pour les classes et le jeu\n**!dpz progression <leveling | contrib | inventaire | amitie>** - Sites pour la progression dans le jeu\n**!dpz divers** - Sites divers par rapport à *Black Desert Online*\n**!dpz bonus** - Surprise !");
             });
 
             commands.CreateGroup("dpz", cgb => {
+                cgb.CreateCommand("warnode").Do(async (e) =>
+                {
+                    await e.Channel.SendMessage("https://www.blackdesertonline.com/game/warfare/");
+                });
+
+                cgb.CreateCommand("guilde").Parameter("arg", ParameterType.Optional).Do(async (e) =>
+                {
+                    if (e.GetArg("arg") == "site")
+                        await e.Channel.SendMessage("http://divisionparzero.guildi.com/fr/m/profil/2-Divisionparzero");
+                    else if (e.GetArg("arg") == "elephant")
+                        await e.Channel.SendMessage("http://bddatabase.net/fr/item/9916/");
+                    else if (e.GetArg("arg") == "voilier")
+                        await e.Channel.SendMessage("http://bddatabase.net/fr/item/9906/");
+                    else
+                        await e.Channel.SendMessage("site - http://divisionparzero.guildi.com/fr/m/profil/2-Divisionparzero \nelephant - http://bddatabase.net/fr/item/9916/ \nvoilier http://bddatabase.net/fr/item/9906/");
+                });
+
                 cgb.CreateCommand("map").Parameter("arg", ParameterType.Optional).Do(async (e) =>
                 {
                     if (e.GetArg("arg") == "1")
@@ -72,8 +89,10 @@ namespace DPZBot
                         await e.Channel.SendMessage("https://docs.google.com/spreadsheets/d/1WzAeIFslcWhZ-TudUTrvt4S6ejGF8Uo5FwVqNivfHK0/pubhtml");
                     else if (e.GetArg("arg") == "tableau")
                         await e.Channel.SendMessage("http://i.imgur.com/G7Aw641.png");
+                    else if (e.GetArg("arg") == "cristaux")
+                        await e.Channel.SendMessage("https://alphaoptix.github.io/bdocrystalz/")
                     else
-                        await e.Channel.SendMessage("1 - https://www.reddit.com/r/blackdesertonline/comments/5gzhox/alexmac_gear_enchant_guide_get_those_tets_boys/ \n2 - https://docs.google.com/spreadsheets/d/1WzAeIFslcWhZ-TudUTrvt4S6ejGF8Uo5FwVqNivfHK0/pubhtml \ntableau - http://i.imgur.com/G7Aw641.png");
+                        await e.Channel.SendMessage("1 - https://www.reddit.com/r/blackdesertonline/comments/5gzhox/alexmac_gear_enchant_guide_get_those_tets_boys/ \n2 - https://docs.google.com/spreadsheets/d/1WzAeIFslcWhZ-TudUTrvt4S6ejGF8Uo5FwVqNivfHK0/pubhtml \ntableau - http://i.imgur.com/G7Aw641.png \ncristaux https://alphaoptix.github.io/bdocrystalz/");
                 });
 
                 cgb.CreateCommand("guide").Parameter("arg", ParameterType.Optional).Do(async (e) =>
