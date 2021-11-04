@@ -135,7 +135,7 @@ namespace DPZBot
             // Connexion to discord
             discord.ExecuteAndWait(async () =>
             {
-                await discord.Connect("MzA0MzQ5NTcxMDA0MjM1Nzc2.C9lXJQ.M0qaQBWInlMq5pqnSN2Ie37Ji0U", TokenType.Bot);
+                await discord.Connect("secret", TokenType.Bot);
                 discord.SetGame("Dites !aide");
             });
         }
